@@ -14,6 +14,7 @@ public class Association {
     //c1 public static ArrayList <String> moreThanFifty = new ArrayList <> ();
 	public static ArrayList <ArtistUser> moreThanFifty = new ArrayList <> ();
     
+	public static int threshold = 50;
     
     public static void main(String[] args) {
     
@@ -39,21 +40,12 @@ public class Association {
                     	
                         //c1 count = artistMap.get(someArtists[i]);
                     	
-                    	
-                    	
-                    	
                     	ArtistUser anArtist = artistMap.get(someArtists[i]);
-                    	
-                    	
-                    	if(anArtist.artistName.equals("The Strokes"))
-                    	{
-                    		System.out.println("moar stupid");
-                    	}
                     	
                     	anArtist.users.add(userIndex);
                     	
                     	//the moment the userCount hits 50, add it to the moreThanFifty list
-                        if(anArtist.userCount() == 50){
+                        if(anArtist.userCount() == threshold){
                             //moreThanFifty.add(someArtists[i]);
                         	moreThanFifty.add(anArtist);
                         }                  
@@ -76,28 +68,24 @@ public class Association {
             
             OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("50.txt"), "UTF8");
             for(int i = 0; i < moreThanFifty.size(); i ++){
-            	out.write(moreThanFifty.get(i).artistName + ":");
-            	System.out.print(moreThanFifty.get(i).artistName + ":");
-            	
-            	if(moreThanFifty.get(i).artistName.equals("The Strokes"))
-            	{
-            		System.out.println("do something stupid");
-            	}
+            	//out.write(moreThanFifty.get(i).artistName + ":");
+            	//System.out.print(moreThanFifty.get(i).artistName + ":");
+            
             	
             	int a = moreThanFifty.get(i).users.get(0).intValue();
-            	out.write(a);
+            	//out.write(a);
             	
             	
-            	System.out.print(a);
+            	//System.out.print(a);
             	for(int j = 1; j < moreThanFifty.get(i).users.size(); j++)
             	{
-            		out.write(" " + moreThanFifty.get(i).users.get(j));
-            		System.out.print(" " + moreThanFifty.get(i).users.get(j));
+            		//out.write(" " + moreThanFifty.get(i).users.get(j));
+            		//System.out.print(" " + moreThanFifty.get(i).users.get(j));
             
             		
             	}
-            	System.out.print("\n");
-            	out.write("\n");
+            	//System.out.print("\n");
+            	//out.write("\n");
             }
             out.close();
             
@@ -107,8 +95,8 @@ public class Association {
             System.out.println("cannot open file");
         }
         
-        System.out.println("there are " + artistMap.size() + " artists");
-        System.out.println("there are " + moreThanFifty.size() + " artists on more than 50 lists");
+        //System.out.println("there are " + artistMap.size() + " artists");
+        //System.out.println("there are " + moreThanFifty.size() + " artists on more than 50 lists");
         
         int sizeOfList = moreThanFifty.size();
         
@@ -124,9 +112,39 @@ public class Association {
                 for(int j = i + 1; j < sizeOfList; j++)
                 {
                     //indices (i, j) is a pair
-                    out.write(lineNumber + ": " + moreThanFifty.get(i).artistName + "," + moreThanFifty.get(j).artistName);
-                    out.write("\n");
+                    //out.write(lineNumber + ": " + moreThanFifty.get(i).artistName + "," + moreThanFifty.get(j).artistName);
+                    //out.write("\n");
                     lineNumber++;
+                    
+                    int iListSize = moreThanFifty.get(i).userCount();
+                    int jListSize = moreThanFifty.get(j).userCount();
+                    
+                    int iIndex = 0;
+                    int jIndex = 0;
+                    int pairCount = 0;
+                    
+                    //stepping down the lists, kind of like mergesort i guess
+                    do
+                    {
+                    	int iUserId = moreThanFifty.get(i).users.get(iIndex);
+                    	int jUserId = moreThanFifty.get(j).users.get(jIndex);
+                    	
+                    	if(iUserId < jUserId)
+                    		iIndex++;
+                    	else if(iUserId > jUserId)
+                    		jIndex++;
+                    	else //they're equal
+                    	{
+                    		pairCount++;
+                    		iIndex++;
+                    		jIndex++;
+                    	}
+                    } while(iIndex < iListSize && jIndex < jListSize && pairCount < threshold);
+                    
+                    if(pairCount >= 50)
+                    {
+                    	System.out.println(moreThanFifty.get(i).artistName + "," + moreThanFifty.get(j).artistName);
+                    }
                 }
             }
             out.close();

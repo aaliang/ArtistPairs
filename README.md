@@ -1,4 +1,7 @@
 ArtistPairs
+
+My solution is in the directory ArtistPairs(scales)
+
 ===========
 The attached utf-8 encoded text file contains the favorite musical artists of 1000 users from LastFM. Each line is a list of up to 50 artists, formatted as follows:
 

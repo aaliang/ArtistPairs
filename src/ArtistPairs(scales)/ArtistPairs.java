@@ -181,7 +181,7 @@ public class ArtistPairs {
 		
 	}
     
-    public static void main(String[] argc) {
+    public static void main(String[] arg) {
     	
     	String[] args = {"Artist_lists_small.txt","50"};
     	

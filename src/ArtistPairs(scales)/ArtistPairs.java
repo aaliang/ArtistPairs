@@ -32,56 +32,56 @@ public class ArtistPairs {
 
 		MoreThanThreshold = new ArrayList <>();
 
-        try
-        {
-            BufferedReader in = new BufferedReader(new FileReader(filename.trim()));
-
-            int userIndex = 0;
-  
-            while(in.ready()){
-            	//read each line (user) and detokenize the string
-            	
-                String aLine = in.readLine();
-                aLine = new String(aLine.getBytes(), "UTF-8");
-                
-                String someArtists[] = aLine.split(",");  
-                
-                //go through each artist that is listed by the user
-                for(int i = 0; i < someArtists.length; i++){
-                	
-                	String artist = someArtists[i].trim();                	    	
-                	
-                    if(ArtistMap.containsKey(artist)){
-                    	//we've already seen this Artist before!                  	
-                    	
-                    	ArtistUser anArtist = ArtistMap.get(artist);
-                    	
-                    	anArtist.users.add(userIndex);
-                    	
-                    	//the moment the userCount hits 50 (THRESHOLD), add it to the MoreThanThreshold list
-                        if(anArtist.userCount() == THRESHOLD){
-
-                        	MoreThanThreshold.add(anArtist);
-                        }                  
-                    }
-
-                    else //this is the first time a new Artist is encountered!
-                    {                   	
-                    	ArtistUser newArtist = new ArtistUser(artist, userIndex);
-                    	ArtistMap.put(artist, newArtist);
-                    }              
-                }                
-                userIndex++;
-            }
-		}
-		catch(IOException iox)
-        {
-            System.out.println("cannot open file" + filename);
-            System.exit(1);
-        }
+	        try
+	        {
+	            BufferedReader in = new BufferedReader(new FileReader(filename.trim()));
+	
+	            int userIndex = 0;
+	  
+	            while(in.ready()){
+	            	//read each line (user) and detokenize the string
+	            	
+	                String aLine = in.readLine();
+	                aLine = new String(aLine.getBytes(), "UTF-8");
+	                
+	                String someArtists[] = aLine.split(",");  
+	                
+	                //go through each artist that is listed by the user
+	                for(int i = 0; i < someArtists.length; i++){
+	                	
+	                	String artist = someArtists[i].trim();                	    	
+	                	
+	                    if(ArtistMap.containsKey(artist)){
+	                    	//we've already seen this Artist before!                  	
+	                    	
+	                    	ArtistUser anArtist = ArtistMap.get(artist);
+	                    	
+	                    	anArtist.users.add(userIndex);
+	                    	
+	                    	//the moment the userCount hits 50 (THRESHOLD), add it to the MoreThanThreshold list
+	                        if(anArtist.userCount() == THRESHOLD){
+	
+	                        	MoreThanThreshold.add(anArtist);
+	                        }                  
+	                    }
+	
+	                    else //this is the first time a new Artist is encountered!
+	                    {                   	
+	                    	ArtistUser newArtist = new ArtistUser(artist, userIndex);
+	                    	ArtistMap.put(artist, newArtist);
+	                    }              
+	                }                
+	                userIndex++;
+	            }
+			}
+			catch(IOException iox)
+	        {
+	            System.out.println("cannot open file" + filename);
+	            System.exit(1);
+	        }
             
-        //prune out the user-artist lists so that only the artists with 50+ instances remain.
-        sparsifyUserArtistList();
+	        //prune out the user-artist lists so that only the artists with 50+ instances remain.
+	        sparsifyUserArtistList();
      
 	}
 	

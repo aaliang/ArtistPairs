@@ -92,25 +92,25 @@ public class ArtistPairs {
 		//then going mapping each user to a list of artist indices that have occured more than 50 times. The result is put into
 		//the SparseUserMap
         
-        SparseUserMap = new HashMap <Integer, ArrayList<Integer>> ();
-        //keyed by the user index, the list value is the integer index in the MoreThanThreshold arraylist.
-        
-        for(int i = 0; i < MoreThanThreshold.size(); i++)
-        {
-        	ArtistUser anArtist = MoreThanThreshold.get(i);
-        	
-        	for(int j = 0; j < anArtist.users.size(); j++)
-        	{
-        		int userJIndex = anArtist.users.get(j);
-        		
-        		if(!SparseUserMap.containsKey(userJIndex))
-        		{
-        			ArrayList <Integer> initialArtistList = new ArrayList<>();
-        			SparseUserMap.put(userJIndex, initialArtistList);
-        		}
-        		SparseUserMap.get(userJIndex).add(i);
-        	}
-        }
+	        SparseUserMap = new HashMap <Integer, ArrayList<Integer>> ();
+	        //keyed by the user index, the list value is the integer index in the MoreThanThreshold arraylist.
+	        
+	        for(int i = 0; i < MoreThanThreshold.size(); i++)
+	        {
+	        	ArtistUser anArtist = MoreThanThreshold.get(i);
+	        	
+	        	for(int j = 0; j < anArtist.users.size(); j++)
+	        	{
+	        		int userJIndex = anArtist.users.get(j);
+	        		
+	        		if(!SparseUserMap.containsKey(userJIndex))
+	        		{
+	        			ArrayList <Integer> initialArtistList = new ArrayList<>();
+	        			SparseUserMap.put(userJIndex, initialArtistList);
+	        		}
+	        		SparseUserMap.get(userJIndex).add(i);
+	        	}
+	        }
 	}
 
 	private static void combineAndOutput(){

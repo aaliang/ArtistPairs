@@ -49,27 +49,27 @@ public class ArtistPairs {
 	                //go through each artist that is listed by the user
 	                for(int i = 0; i < someArtists.length; i++){
 	                	
-	                	String artist = someArtists[i].trim();                	    	
+                		String artist = someArtists[i].trim();                	    	
 	                	
-	                    if(ArtistMap.containsKey(artist)){
-	                    	//we've already seen this Artist before!                  	
+	                    	if(ArtistMap.containsKey(artist)){
+	                    		//we've already seen this Artist before!                  	
 	                    	
-	                    	ArtistUser anArtist = ArtistMap.get(artist);
+	                    		ArtistUser anArtist = ArtistMap.get(artist);
 	                    	
-	                    	anArtist.users.add(userIndex);
+	                    		anArtist.users.add(userIndex);
 	                    	
-	                    	//the moment the userCount hits 50 (THRESHOLD), add it to the MoreThanThreshold list
-	                        if(anArtist.userCount() == THRESHOLD){
+	                    		//the moment the userCount hits 50 (THRESHOLD), add it to the MoreThanThreshold list
+	                        	if(anArtist.userCount() == THRESHOLD){
 	
-	                        	MoreThanThreshold.add(anArtist);
-	                        }                  
-	                    }
+	                        		MoreThanThreshold.add(anArtist);
+	                       		}                  
+	                    	}
 	
-	                    else //this is the first time a new Artist is encountered!
-	                    {                   	
-	                    	ArtistUser newArtist = new ArtistUser(artist, userIndex);
-	                    	ArtistMap.put(artist, newArtist);
-	                    }              
+	                    	else //this is the first time a new Artist is encountered!
+	                   	{                   	
+	                    		ArtistUser newArtist = new ArtistUser(artist, userIndex);
+	                    		ArtistMap.put(artist, newArtist);
+	                    	}              
 	                }                
 	                userIndex++;
 	            }

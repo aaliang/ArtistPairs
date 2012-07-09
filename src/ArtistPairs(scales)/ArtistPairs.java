@@ -73,12 +73,13 @@ public class ArtistPairs {
 	                }                
 	                userIndex++;
 	            }
-			}
-			catch(IOException iox)
+		}
+		catch(IOException iox)
 	        {
 	            System.out.println("cannot open file" + filename);
 	            System.exit(1);
 	        }
+	        in.close();
             
 	        //prune out the user-artist lists so that only the artists with 50+ instances remain.
 	        sparsifyUserArtistList();

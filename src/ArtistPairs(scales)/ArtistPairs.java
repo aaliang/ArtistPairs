@@ -5,10 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map.Entry;
+
 
 public class ArtistPairs {
 
@@ -41,7 +39,7 @@ public class ArtistPairs {
 	            while(in.ready()){
 	            	//read each line (user) and detokenize the string
 	            	
-	                String aLine = in.readLine();
+	            	String aLine = in.readLine();
 	                aLine = new String(aLine.getBytes(), "UTF-8");
 	                
 	                String someArtists[] = aLine.split(",");  
@@ -151,7 +149,7 @@ public class ArtistPairs {
 	{
 		int iListSize = MoreThanThreshold.get(i).userCount();
 
-		LinkedHashMap <Integer, Integer> lhmap = new LinkedHashMap<>();
+		HashMap <Integer, Integer> lhmap = new HashMap<>();
 		//keyed by an integer that represents the index of the artist in MoreThanThreshold
 		
 		ArrayList <Integer> matchedArtist = new ArrayList<>();

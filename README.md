@@ -2,7 +2,7 @@ ArtistPairs
 
 My solution is in the directory ArtistPairs(scales)
 
-Here is a walkthrough, I guess of what's going on. the objective of this exercise is stated below the comments
+Here is a walkthrough, I guess, of what's going on. the objective of this exercise is stated below the comments
 
 /* Andy Liang, a.liang1989@gmail.com 
 *

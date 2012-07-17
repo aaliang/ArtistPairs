@@ -1,6 +1,5 @@
-ArtistPairs
-
-My solution is in the directory ArtistPairs(scales)
+My solution is in the directory ArtistPairs(scales), although there is the vanilla "ArtistPairs" which performs significantly worse when the dataset gets too large.
+The vanilla ArtistPairs uses brute force which probably isnt a great approach for data mining-esque problems like this
 
 Here is a walkthrough, I guess, of what's going on. the objective of this exercise is stated below the comments
 

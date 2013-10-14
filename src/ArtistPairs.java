@@ -173,7 +173,7 @@ public class ArtistPairs {
                 if(lhmap.containsKey(artistId))
                 {
                     initialCount = lhmap.get(artistId);
-                    if(initialCount+1 == 50)
+                    if(initialCount+1 == THRESHOLD)
                     {
                         matchedArtist.add(artistId);
                     }

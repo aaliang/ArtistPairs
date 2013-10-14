@@ -1,6 +1,18 @@
-Here is a walkthrough, I guess, of what's going on. the objective of this exercise is stated below the comments
+@author aliang
 
-Andy Liang, a.liang1989@gmail.com
+The attached utf-8 encoded text file contains the favorite musical artists of 1000 users from LastFM. Each line is a list of up to 50 artists, formatted as follows:
+
+ 
+
+Radiohead,Pulp,Morrissey,Delays,Stereophonics,Blur,Suede,Sleeper,The La's,Super Furry Animals\n Band of Horses,Iggy Pop,The Velvet Underground,Radiohead,The Decemberists,Morrissey,Television\n
+
+etc.
+
+ 
+
+Objective is to produce a list of pairs of artists which appear TOGETHER in at least fifty different lists. For example, in the above sample, Radiohead and Morrissey appear together twice, but every other pair appears only once. Your program should output the pair list to stdout in the same form as the input (eg Artist Name 1, Artist Name 2\n).
+
+==========
 
 Java JDK 7 is assumed 
 
@@ -52,17 +64,3 @@ Space complexity:
  	n/t. on extremely large data sets however it might be prudent to just do random sampling instead of iterating over
   the entire set.
   
-
-
-===========
-The attached utf-8 encoded text file contains the favorite musical artists of 1000 users from LastFM. Each line is a list of up to 50 artists, formatted as follows:
-
- 
-
-Radiohead,Pulp,Morrissey,Delays,Stereophonics,Blur,Suede,Sleeper,The La's,Super Furry Animals\n Band of Horses,Iggy Pop,The Velvet Underground,Radiohead,The Decemberists,Morrissey,Television\n
-
-etc.
-
- 
-
-Objective is to produce a list of pairs of artists which appear TOGETHER in at least fifty different lists. For example, in the above sample, Radiohead and Morrissey appear together twice, but every other pair appears only once. Your program should output the pair list to stdout in the same form as the input (eg Artist Name 1, Artist Name 2\n).
